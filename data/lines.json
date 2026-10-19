@@ -1,0 +1,17 @@
+{
+  "Bakerloo Line":           {"bg": "#B36305", "fg": "#FFFFFF"},
+  "Central Line":            {"bg": "#E32017", "fg": "#FFFFFF"},
+  "Circle Line":             {"bg": "#FFD300", "fg": "#000000"},
+  "District Line":           {"bg": "#00782A", "fg": "#FFFFFF"},
+  "Hammersmith & City Line": {"bg": "#F3A9BB", "fg": "#000000"},
+  "Jubilee Line":            {"bg": "#A0A5A9", "fg": "#FFFFFF"},
+  "Metropolitan Line":       {"bg": "#9B0056", "fg": "#FFFFFF"},
+  "Northern Line":           {"bg": "#262626", "fg": "#FFFFFF"},
+  "Piccadilly Line":         {"bg": "#003688", "fg": "#FFFFFF"},
+  "Victoria Line":           {"bg": "#0098D4", "fg": "#FFFFFF"},
+  "Waterloo & City Line":    {"bg": "#95CDBA", "fg": "#000000"},
+  "Elizabeth Line":          {"bg": "#6950A1", "fg": "#FFFFFF"},
+  "DLR":                     {"bg": "#00A4A7", "fg": "#FFFFFF"},
+  "London Overground":       {"bg": "#EE7C0E", "fg": "#FFFFFF"},
+  "National Rail":           {"bg": "#1C355E", "fg": "#FFFFFF"}
+}
