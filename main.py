@@ -1,7 +1,8 @@
 """TubeGuessr daily carousel.
 
   python main.py check                 validate the data files
-  python main.py render                pick images from Google Drive, render slides into ./out
+  python main.py render                pick images (from images/slide1-3 in this repo, or Google Drive
+                                       if DRIVE_FOLDER_SLIDE1 is set), render slides into ./out
   python main.py render --local DIR    same, but pick images from a local folder (for testing)
   python main.py post                  send ./out to your TikTok drafts via PostPeer
 """
@@ -45,6 +46,19 @@ def _local_backgrounds(folder: Path) -> list:
     return [random.choice(files) for _ in range(3)]
 
 
+def _repo_backgrounds() -> list:
+    """Pick one random image from each of images/slide1, images/slide2, images/slide3 in this repo."""
+    picks = []
+    for n in (1, 2, 3):
+        folder = ROOT / "images" / ("slide%d" % n)
+        files = [p for p in folder.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")] if folder.exists() else []
+        if not files:
+            raise SystemExit("No jpg/png/webp images found in images/slide%d/ - add some and commit them." % n)
+        picks.append(random.choice(files))
+    print("Backgrounds:", ", ".join(p.name for p in picks))
+    return picks
+
+
 def cmd_render(args):
     from render import render_all
 
@@ -57,6 +71,8 @@ def cmd_render(args):
         tmp = Path(tmp)
         if args.local:
             backgrounds = _local_backgrounds(Path(args.local))
+        elif not os.environ.get("DRIVE_FOLDER_SLIDE1"):
+            backgrounds = _repo_backgrounds()  # default: images stored in this repo
         else:
             from drive import pick_images
 
