@@ -1,0 +1,56 @@
+name: Daily TubeGuessr carousel
+
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 07:00 UTC every day. Change the hour to taste.
+  workflow_dispatch:       # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write          # needed to publish the slides to the 'slides' branch
+
+jobs:
+  carousel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-color-emoji
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Render slides
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          DRIVE_FOLDER_SLIDE1: ${{ secrets.DRIVE_FOLDER_SLIDE1 }}
+          DRIVE_FOLDER_SLIDE2: ${{ secrets.DRIVE_FOLDER_SLIDE2 }}
+          DRIVE_FOLDER_SLIDE3: ${{ secrets.DRIVE_FOLDER_SLIDE3 }}
+        run: python main.py render
+
+      - name: Publish slides to the 'slides' branch (gives them public URLs)
+        run: |
+          git config --global user.name "carousel-bot"
+          git config --global user.email "carousel-bot@users.noreply.github.com"
+          git worktree add --detach "$RUNNER_TEMP/pub"
+          cd "$RUNNER_TEMP/pub"
+          git checkout --orphan slides
+          git rm -rf . -q
+          cp "$GITHUB_WORKSPACE"/out/*.jpg .
+          git add .
+          git commit -m "Slides for $(date -u +%F)"
+          git push -f origin slides
+
+      - name: Send to TikTok drafts
+        env:
+          POSTPEER_API_KEY: ${{ secrets.POSTPEER_API_KEY }}
+          POSTPEER_ACCOUNT_ID: ${{ secrets.POSTPEER_ACCOUNT_ID }}
+          IMAGE_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/slides
+        run: python main.py post
