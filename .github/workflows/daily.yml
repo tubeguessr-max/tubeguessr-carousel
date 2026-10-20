@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   carousel:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest   # macOS has Apple's emoji font, so emojis match TikTok
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -22,10 +22,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y fonts-noto-color-emoji
           pip install -r requirements.txt
-          python -m playwright install --with-deps chromium
+          python -m playwright install chromium
 
       - name: Render slides
         env:
