@@ -65,16 +65,21 @@ def _openable(path: Path) -> bool:
 
 
 def _repo_backgrounds() -> list:
-    """Pick one random image from each of images/slide1, images/slide2, images/slide3 in this repo."""
-    picks = []
-    for n in (1, 2, 3):
-        folder = ROOT / "images" / ("slide%d" % n)
+    """Slide 1 picks from images/slide1. Slides 2 and 3 both pick from images/slide2
+    (two different photos, unless the folder only has one readable photo)."""
+    folders = ["slide1", "slide2", "slide2"]
+    picks, used = [], set()
+    for name in folders:
+        folder = ROOT / "images" / name
         files = [p for p in folder.glob("*") if p.suffix.lower() in IMG_EXT] if folder.exists() else []
         random.shuffle(files)
-        pick = next((p for p in files if _openable(p)), None)
-        if pick is None:
-            raise SystemExit("No readable photos found in images/slide%d/ - add some and commit them." % n)
-        picks.append(pick)
+        readable = [p for p in files if p not in used and _openable(p)]
+        if not readable:  # e.g. only one photo in the folder: allow a repeat
+            readable = [p for p in files if _openable(p)]
+        if not readable:
+            raise SystemExit("No readable photos found in images/%s/ - add some and commit them." % name)
+        picks.append(readable[0])
+        used.add(readable[0])
     print("Backgrounds:", ", ".join(p.name for p in picks))
     return picks
 
