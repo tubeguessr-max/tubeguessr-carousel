@@ -10,12 +10,16 @@ FONT_WEIGHT = 600
 
 JPEG_QUALITY = 92
 
+# Chance (0 to 1) that slide 1 uses a "rage bait" hook from data/hooks.json instead of a normal one.
+BAIT_CHANCE = 0.4
+
 # TikTok shows a short bold TITLE (max 90 characters) and a longer DESCRIPTION below it.
 # Neither may give away the station.
 TITLE = "Can you guess this Tube station? 🚇"
 
 DESCRIPTION = (
-    "Think you know London's Underground? Swipe to see if you got it right, "
-    "then test yourself with way more stations in the TubeGuessr app, free on the App Store. "
-    "#london #londonunderground #tube #tfl #londoner #londonlife"
+    "London Underground quiz: can you guess the Tube station from its lines? "
+    "Swipe for the answer, then test yourself with way more stations in the TubeGuessr app, "
+    "free on the App Store. Comment your guess 👇 "
+    "#london #londonunderground #tube #londonlife #londoner"
 )

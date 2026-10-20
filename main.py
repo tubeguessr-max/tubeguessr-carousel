@@ -36,7 +36,8 @@ def cmd_check(_args):
     ]
     if problems:
         raise SystemExit("\n".join(problems))
-    print("OK: %d stations, %d lines, %d hooks" % (len(stations), len(lines), len(hooks)))
+    print("OK: %d stations, %d lines, %d normal hooks, %d bait hooks"
+          % (len(stations), len(lines), len(hooks["normal"]), len(hooks["bait"])))
 
 
 def _local_backgrounds(folder: Path) -> list:
@@ -83,7 +84,8 @@ def cmd_render(args):
 
     stations, _lines, hooks = load_data()
     station = random.choice(list(stations))
-    hook = random.choice(hooks)
+    pool = hooks["bait"] if random.random() < config.BAIT_CHANCE else hooks["normal"]
+    hook = random.choice(pool)
     print("Station: %s | Hook: %s" % (station, hook))
 
     with tempfile.TemporaryDirectory() as tmp:
