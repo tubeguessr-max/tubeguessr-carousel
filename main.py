@@ -36,8 +36,9 @@ def cmd_check(_args):
     ]
     if problems:
         raise SystemExit("\n".join(problems))
-    print("OK: %d stations, %d lines, %d normal hooks, %d bait hooks"
-          % (len(stations), len(lines), len(hooks["normal"]), len(hooks["bait"])))
+    eligible = sum(1 for ls in stations.values() if len(ls) >= config.MIN_LINES)
+    print("OK: %d stations (%d with %d+ lines are used), %d lines, %d normal hooks, %d bait hooks"
+          % (len(stations), eligible, config.MIN_LINES, len(lines), len(hooks["normal"]), len(hooks["bait"])))
 
 
 def _local_backgrounds(folder: Path) -> list:
@@ -88,7 +89,10 @@ def cmd_render(args):
     from render import render_all
 
     stations, _lines, hooks = load_data()
-    station = random.choice(list(stations))
+    eligible = [s for s, ls in stations.items() if len(ls) >= config.MIN_LINES]
+    if not eligible:
+        raise SystemExit("No stations with at least %d lines in data/stations.json" % config.MIN_LINES)
+    station = random.choice(eligible)
     pool = hooks["bait"] if random.random() < config.BAIT_CHANCE else hooks["normal"]
     hook = random.choice(pool)
     print("Station: %s | Hook: %s" % (station, hook))

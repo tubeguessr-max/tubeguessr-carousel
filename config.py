@@ -10,6 +10,9 @@ FONT_WEIGHT = 600
 
 JPEG_QUALITY = 92
 
+# Only stations served by at least this many lines are used (a 1-line station is too easy to guess).
+MIN_LINES = 2
+
 # Chance (0 to 1) that slide 1 uses a "rage bait" hook from data/hooks.json instead of a normal one.
 BAIT_CHANCE = 0.4
 
