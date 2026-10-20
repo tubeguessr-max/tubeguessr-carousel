@@ -1,24 +1,551 @@
 {
-  "London Bridge": ["Jubilee Line", "Northern Line", "National Rail"],
-  "King’s Cross St Pancras": ["Circle Line", "Hammersmith & City Line", "Metropolitan Line", "Northern Line", "Piccadilly Line", "Victoria Line", "National Rail"],
-  "Waterloo": ["Bakerloo Line", "Jubilee Line", "Northern Line", "Waterloo & City Line", "National Rail"],
-  "Oxford Circus": ["Bakerloo Line", "Central Line", "Victoria Line"],
-  "Baker Street": ["Bakerloo Line", "Circle Line", "Hammersmith & City Line", "Jubilee Line", "Metropolitan Line"],
-  "Paddington": ["Bakerloo Line", "Circle Line", "District Line", "Hammersmith & City Line", "Elizabeth Line", "National Rail"],
-  "Victoria": ["Circle Line", "District Line", "Victoria Line", "National Rail"],
-  "Canary Wharf": ["Jubilee Line", "Elizabeth Line", "DLR"],
-  "Green Park": ["Jubilee Line", "Piccadilly Line", "Victoria Line"],
-  "Westminster": ["Circle Line", "District Line", "Jubilee Line"],
-  "Embankment": ["Bakerloo Line", "Circle Line", "District Line", "Northern Line"],
-  "Tottenham Court Road": ["Central Line", "Northern Line", "Elizabeth Line"],
-  "Leicester Square": ["Northern Line", "Piccadilly Line"],
-  "Earl’s Court": ["District Line", "Piccadilly Line"],
-  "Whitechapel": ["District Line", "Hammersmith & City Line", "Elizabeth Line", "London Overground"],
-  "Moorgate": ["Circle Line", "Hammersmith & City Line", "Metropolitan Line", "Northern Line", "National Rail"],
-  "Farringdon": ["Circle Line", "Hammersmith & City Line", "Metropolitan Line", "Elizabeth Line", "National Rail"],
-  "Bond Street": ["Central Line", "Jubilee Line", "Elizabeth Line"],
-  "Stockwell": ["Northern Line", "Victoria Line"],
-  "Vauxhall": ["Victoria Line", "National Rail"],
-  "Elephant & Castle": ["Bakerloo Line", "Northern Line", "National Rail"],
-  "Finsbury Park": ["Piccadilly Line", "Victoria Line", "National Rail"]
+ "Acton Town": [
+  "District Line",
+  "Piccadilly Line"
+ ],
+ "Archway": [
+  "Northern Line"
+ ],
+ "Arsenal": [
+  "Piccadilly Line"
+ ],
+ "Baker Street": [
+  "Bakerloo Line",
+  "Circle Line",
+  "Hammersmith & City Line",
+  "Jubilee Line",
+  "Metropolitan Line"
+ ],
+ "Balham": [
+  "Northern Line",
+  "National Rail"
+ ],
+ "Bank": [
+  "Central Line",
+  "Northern Line",
+  "Waterloo & City Line",
+  "DLR"
+ ],
+ "Barking": [
+  "District Line",
+  "Hammersmith & City Line",
+  "London Overground"
+ ],
+ "Barkingside": [
+  "Central Line"
+ ],
+ "Barons Court": [
+  "District Line",
+  "Piccadilly Line"
+ ],
+ "Bayswater": [
+  "Circle Line",
+  "District Line"
+ ],
+ "Belsize Park": [
+  "Northern Line"
+ ],
+ "Bond Street": [
+  "Central Line",
+  "Jubilee Line",
+  "Elizabeth Line"
+ ],
+ "Boston Manor": [
+  "Piccadilly Line"
+ ],
+ "Brixton": [
+  "Victoria Line"
+ ],
+ "Buckhurst Hill": [
+  "Central Line"
+ ],
+ "Camden Town": [
+  "Northern Line"
+ ],
+ "Canada Water": [
+  "Jubilee Line",
+  "London Overground"
+ ],
+ "Canary Wharf": [
+  "Jubilee Line",
+  "Elizabeth Line",
+  "DLR"
+ ],
+ "Canons Park": [
+  "Jubilee Line"
+ ],
+ "Chalk Farm": [
+  "Northern Line"
+ ],
+ "Charing Cross": [
+  "Bakerloo Line",
+  "Northern Line",
+  "National Rail"
+ ],
+ "Chesham": [
+  "Metropolitan Line"
+ ],
+ "Chigwell": [
+  "Central Line"
+ ],
+ "Clapham Common": [
+  "Northern Line"
+ ],
+ "Clapham North": [
+  "Northern Line"
+ ],
+ "Clapham South": [
+  "Northern Line"
+ ],
+ "Colliers Wood": [
+  "Northern Line"
+ ],
+ "Custom House": [
+  "Elizabeth Line",
+  "DLR"
+ ],
+ "Dagenham East": [
+  "District Line"
+ ],
+ "Dagenham Heathway": [
+  "District Line"
+ ],
+ "Debden": [
+  "Central Line"
+ ],
+ "Ealing Broadway": [
+  "Central Line",
+  "District Line",
+  "Elizabeth Line"
+ ],
+ "Ealing Common": [
+  "District Line",
+  "Piccadilly Line"
+ ],
+ "Earl’s Court": [
+  "District Line",
+  "Piccadilly Line"
+ ],
+ "East Acton": [
+  "Central Line"
+ ],
+ "Edgware": [
+  "Northern Line"
+ ],
+ "Edgware Road": [
+  "Bakerloo Line",
+  "Circle Line",
+  "District Line",
+  "Hammersmith & City Line"
+ ],
+ "Elephant & Castle": [
+  "Bakerloo Line",
+  "Northern Line",
+  "National Rail"
+ ],
+ "Elm Park": [
+  "District Line"
+ ],
+ "Embankment": [
+  "Bakerloo Line",
+  "Circle Line",
+  "District Line",
+  "Northern Line"
+ ],
+ "Epping": [
+  "Central Line"
+ ],
+ "Euston": [
+  "Northern Line",
+  "Victoria Line",
+  "London Overground"
+ ],
+ "Fairlop": [
+  "Central Line"
+ ],
+ "Farringdon": [
+  "Circle Line",
+  "Hammersmith & City Line",
+  "Metropolitan Line",
+  "Elizabeth Line",
+  "National Rail"
+ ],
+ "Finchley Road": [
+  "Jubilee Line",
+  "Metropolitan Line"
+ ],
+ "Finsbury Park": [
+  "Piccadilly Line",
+  "Victoria Line"
+ ],
+ "Gants Hill": [
+  "Central Line"
+ ],
+ "Grange Hill": [
+  "Central Line"
+ ],
+ "Green Park": [
+  "Jubilee Line",
+  "Piccadilly Line",
+  "Victoria Line"
+ ],
+ "Gunnersbury": [
+  "District Line",
+  "London Overground"
+ ],
+ "Hainault": [
+  "Central Line"
+ ],
+ "Hammersmith": [
+  "Circle Line",
+  "District Line",
+  "Hammersmith & City Line",
+  "Piccadilly Line"
+ ],
+ "Hanger Lane": [
+  "Central Line"
+ ],
+ "Harlesden": [
+  "Bakerloo Line"
+ ],
+ "Harrow & Wealdstone": [
+  "Bakerloo Line",
+  "London Overground"
+ ],
+ "Hatton Cross": [
+  "Piccadilly Line"
+ ],
+ "Heathrow Terminal 4": [
+  "Piccadilly Line"
+ ],
+ "Heathrow Terminal 5": [
+  "Piccadilly Line"
+ ],
+ "High Barnet": [
+  "Northern Line"
+ ],
+ "High Street Kensington": [
+  "Circle Line",
+  "District Line"
+ ],
+ "Highbury & Islington": [
+  "Victoria Line",
+  "London Overground",
+  "National Rail"
+ ],
+ "Hillingdon": [
+  "Metropolitan Line",
+  "Piccadilly Line"
+ ],
+ "Holborn": [
+  "Central Line",
+  "Piccadilly Line"
+ ],
+ "Hounslow Central": [
+  "Piccadilly Line"
+ ],
+ "Hounslow East": [
+  "Piccadilly Line"
+ ],
+ "Hounslow West": [
+  "Piccadilly Line"
+ ],
+ "Ickenham": [
+  "Metropolitan Line",
+  "Piccadilly Line"
+ ],
+ "Kensal Green": [
+  "Bakerloo Line"
+ ],
+ "Kensington Olympia": [
+  "District Line",
+  "London Overground"
+ ],
+ "Kentish Town": [
+  "Northern Line"
+ ],
+ "Kenton": [
+  "Bakerloo Line"
+ ],
+ "Kew Gardens": [
+  "District Line",
+  "London Overground"
+ ],
+ "King’s Cross St. Pancras": [
+  "Circle Line",
+  "Hammersmith & City Line",
+  "Metropolitan Line",
+  "Northern Line",
+  "Piccadilly Line",
+  "Victoria Line",
+  "National Rail"
+ ],
+ "Kingsbury": [
+  "Jubilee Line"
+ ],
+ "Lambeth North": [
+  "Bakerloo Line"
+ ],
+ "Leicester Square": [
+  "Northern Line",
+  "Piccadilly Line"
+ ],
+ "Liverpool Street": [
+  "Circle Line",
+  "Hammersmith & City Line",
+  "Central Line",
+  "Metropolitan Line",
+  "Elizabeth Line",
+  "National Rail"
+ ],
+ "London Bridge": [
+  "Jubilee Line",
+  "Northern Line",
+  "National Rail"
+ ],
+ "Loughton": [
+  "Central Line"
+ ],
+ "Mansion House": [
+  "Circle Line",
+  "District Line"
+ ],
+ "Mile End": [
+  "Central Line",
+  "District Line",
+  "Hammersmith & City Line"
+ ],
+ "Mill Hill East": [
+  "Northern Line"
+ ],
+ "Monument": [
+  "Circle Line",
+  "District Line"
+ ],
+ "Moorgate": [
+  "Circle Line",
+  "Hammersmith & City Line",
+  "Metropolitan Line",
+  "Northern Line",
+  "National Rail"
+ ],
+ "Morden": [
+  "Northern Line"
+ ],
+ "Newbury Park": [
+  "Central Line"
+ ],
+ "North Acton": [
+  "Central Line"
+ ],
+ "Northfields": [
+  "Piccadilly Line"
+ ],
+ "Northolt": [
+  "Central Line"
+ ],
+ "Notting Hill Gate": [
+  "Central Line",
+  "Circle Line",
+  "District Line"
+ ],
+ "Osterley": [
+  "Piccadilly Line"
+ ],
+ "Oxford Circus": [
+  "Bakerloo Line",
+  "Central Line",
+  "Victoria Line"
+ ],
+ "Paddington": [
+  "Bakerloo Line",
+  "Circle Line",
+  "District Line",
+  "Hammersmith & City Line",
+  "Elizabeth Line",
+  "National Rail"
+ ],
+ "Perivale": [
+  "Central Line"
+ ],
+ "Piccadilly Circus": [
+  "Bakerloo Line",
+  "Piccadilly Line"
+ ],
+ "Pimlico": [
+  "Victoria Line"
+ ],
+ "Queens Park": [
+  "Bakerloo Line"
+ ],
+ "Queensbury": [
+  "Jubilee Line"
+ ],
+ "Queensway": [
+  "Central Line"
+ ],
+ "Redbridge": [
+  "Central Line"
+ ],
+ "Regents Park": [
+  "Bakerloo Line"
+ ],
+ "Richmond": [
+  "District Line",
+  "London Overground"
+ ],
+ "Ruislip Gardens": [
+  "Central Line"
+ ],
+ "Seven Sisters": [
+  "Victoria Line"
+ ],
+ "Shadwell": [
+  "DLR",
+  "London Overground"
+ ],
+ "Shepherd’s Bush": [
+  "Central Line",
+  "London Overground"
+ ],
+ "Sloane Square": [
+  "Circle Line",
+  "District Line"
+ ],
+ "South Kensington": [
+  "Circle Line",
+  "District Line",
+  "Piccadilly Line"
+ ],
+ "South Kenton": [
+  "Bakerloo Line"
+ ],
+ "South Ruislip": [
+  "Central Line"
+ ],
+ "South Wimbledon": [
+  "Northern Line"
+ ],
+ "South Woodford": [
+  "Central Line"
+ ],
+ "Southfields": [
+  "District Line"
+ ],
+ "St. James’s Park": [
+  "Circle Line",
+  "District Line"
+ ],
+ "Stanmore": [
+  "Jubilee Line"
+ ],
+ "Stockwell": [
+  "Northern Line",
+  "Victoria Line"
+ ],
+ "Stonebridge Park": [
+  "Bakerloo Line"
+ ],
+ "Stratford": [
+  "Central Line",
+  "Jubilee Line",
+  "Elizabeth Line",
+  "DLR"
+ ],
+ "Temple": [
+  "Circle Line",
+  "District Line"
+ ],
+ "Tooting Bec": [
+  "Northern Line"
+ ],
+ "Tooting Broadway": [
+  "Northern Line"
+ ],
+ "Tottenham Court Road": [
+  "Central Line",
+  "Northern Line",
+  "Elizabeth Line"
+ ],
+ "Tower Hill": [
+  "Circle Line",
+  "District Line"
+ ],
+ "Tufnell Park": [
+  "Northern Line"
+ ],
+ "Turnham Green": [
+  "District Line",
+  "Piccadilly Line"
+ ],
+ "Upminster": [
+  "District Line"
+ ],
+ "Upminster Bridge": [
+  "District Line"
+ ],
+ "Uxbridge": [
+  "Metropolitan Line",
+  "Piccadilly Line"
+ ],
+ "Vauxhall": [
+  "Victoria Line"
+ ],
+ "Victoria": [
+  "Circle Line",
+  "District Line",
+  "Victoria Line",
+  "National Rail"
+ ],
+ "Warren Street": [
+  "Northern Line",
+  "Victoria Line"
+ ],
+ "Waterloo": [
+  "Bakerloo Line",
+  "Jubilee Line",
+  "Northern Line",
+  "Waterloo & City Line",
+  "National Rail"
+ ],
+ "Wembley Central": [
+  "Bakerloo Line"
+ ],
+ "West Brompton": [
+  "District Line",
+  "London Overground"
+ ],
+ "West Ham": [
+  "Jubilee Line",
+  "District Line",
+  "DLR",
+  "Hammersmith & City Line"
+ ],
+ "West Ruislip": [
+  "Central Line"
+ ],
+ "Westminster": [
+  "Circle Line",
+  "District Line",
+  "Jubilee Line"
+ ],
+ "White City": [
+  "Central Line"
+ ],
+ "Whitechapel": [
+  "District Line",
+  "Hammersmith & City Line",
+  "Elizabeth Line"
+ ],
+ "Willesden Junction": [
+  "Bakerloo Line",
+  "London Overground"
+ ],
+ "Wimbledon": [
+  "District Line",
+  "Tram"
+ ],
+ "Woodford": [
+  "Central Line"
+ ]
 }
