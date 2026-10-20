@@ -10,8 +10,12 @@ FONT_WEIGHT = 600
 
 JPEG_QUALITY = 92
 
-# Draft caption. It must not give away the station.
-CAPTION = (
-    "Can you guess the station? 🚇 Play more in the TubeGuessr app on the App Store "
-    "#london #londonunderground #tube #tfl #londoner"
+# TikTok shows a short bold TITLE (max 90 characters) and a longer DESCRIPTION below it.
+# Neither may give away the station.
+TITLE = "Can you guess this Tube station? 🚇"
+
+DESCRIPTION = (
+    "Think you know London's Underground? Swipe to see if you got it right, "
+    "then test yourself with way more stations in the TubeGuessr app, free on the App Store. "
+    "#london #londonunderground #tube #tfl #londoner #londonlife"
 )

@@ -30,12 +30,12 @@ def send_draft(meta_path: Path, base_url: str) -> None:
     _wait_until_public(urls)
 
     payload = {
-        "content": meta["caption"],
+        "content": meta["title"][:90],
         "platforms": [
             {
                 "platform": "tiktok",
                 "accountId": os.environ["POSTPEER_ACCOUNT_ID"],
-                "platformSpecificData": {"draft": True, "photoCoverIndex": 0},
+                "platformSpecificData": {"draft": True, "photoCoverIndex": 0, "description": meta["description"]},
             }
         ],
         "mediaItems": [{"type": "image", "url": u} for u in urls],

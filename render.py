@@ -36,6 +36,7 @@ body { position: relative;
 /* single-line boxes and pills */
 .box { display: table; margin: 0 auto; background: #fff; color: #000; border-radius: .2em;
        padding: .17em .45em; line-height: 1.2; white-space: nowrap; }
+.hl2 { color: #000; padding: .06em .4em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .appstore { position: absolute; left: 50%; transform: translateX(-50%); width: auto; height: auto; }
 """.replace("__W__", str(W)).replace("__H__", str(H)).replace("__FW__", str(config.FONT_WEIGHT))
 
@@ -59,12 +60,22 @@ def _text(s: str) -> str:
     return html.escape(s).replace("\n", "<br>")
 
 
+def _hl(text: str, size: int) -> str:
+    """Multi-line TikTok-style highlight. Boxes are drawn on a lower layer and the text on a
+    separate layer above, so a line's box can never paint over the descenders of the line above."""
+    t = _text(text)
+    return (
+        f'<div class="wrap" style="font-size:{size}px;position:relative">'
+        f'<span class="hl" style="color:transparent">{t}</span>'
+        f'<div style="position:absolute;left:0;top:0;width:100%"><span class="hl2">{t}</span></div></div>'
+    )
+
+
 def slide1_html(hook: str) -> str:
     return _page(
         f'<img class="bg" src="bg1.jpg">'
-        f'<div class="layer" style="top:{_y(380)}px"><div class="wrap" style="font-size:56px">'
-        f'<span class="hl">{_text(hook)}</span></div></div>'
-        f'<div class="layer" style="top:{_y(755)}px"><div class="box" style="font-size:76px">—&gt;</div></div>'
+        f'<div class="layer" style="top:{_y(380)}px">{_hl(hook, 56)}</div>'
+        f'<div class="layer" style="top:{_y(755)}px"><div class="box" style="font-size:50px;padding:.14em .4em">—&gt;</div></div>'
     )
 
 
@@ -102,10 +113,8 @@ def slide3_html(station: str, has_appstore: bool) -> str:
         f'<img class="bg" src="bg3.jpg">'
         f'<div class="layer" style="top:{_y(125)}px">'
         f'<div class="box" style="font-size:{fs}px;background:{GREEN};color:#fff">{_text(answer)}</div></div>'
-        f'<div class="layer" style="top:{_y(300)}px"><div class="wrap" style="font-size:56px">'
-        f'<span class="hl">Too easy? Want to test<br>your knowledge more?</span></div></div>'
-        f'<div class="layer" style="top:{_y(515)}px"><div class="wrap" style="font-size:56px">'
-        f'<span class="hl">Download TubeGuessr on<br>the App Store to play<br>more 😎</span></div></div>'
+        f'<div class="layer" style="top:{_y(300)}px">{_hl("Too easy? Want to test\nyour knowledge more?", 56)}</div>'
+        f'<div class="layer" style="top:{_y(515)}px">{_hl("Download TubeGuessr on\nthe App Store to play\nmore 😎", 56)}</div>'
         + appstore
     )
 

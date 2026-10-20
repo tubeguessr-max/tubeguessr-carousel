@@ -109,7 +109,7 @@ def cmd_render(args):
             shutil.copy(slide, OUT / name)
             names.append(name)
     (OUT / "meta.json").write_text(
-        json.dumps({"files": names, "caption": config.CAPTION, "station": station, "hook": hook}, ensure_ascii=False, indent=2),
+        json.dumps({"files": names, "title": config.TITLE, "description": config.DESCRIPTION, "station": station, "hook": hook}, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
     print("Rendered:", ", ".join(names))
