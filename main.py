@@ -46,15 +46,34 @@ def _local_backgrounds(folder: Path) -> list:
     return [random.choice(files) for _ in range(3)]
 
 
+IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif")
+
+
+def _openable(path: Path) -> bool:
+    """True if Pillow can read the photo; unreadable ones are skipped with a warning."""
+    from PIL import Image
+
+    try:
+        import render  # registers the HEIC opener  # noqa: F401
+        with Image.open(path) as im:
+            im.load()
+        return True
+    except Exception as exc:
+        print("Skipping unreadable photo %s (%s)" % (path.name, exc.__class__.__name__))
+        return False
+
+
 def _repo_backgrounds() -> list:
     """Pick one random image from each of images/slide1, images/slide2, images/slide3 in this repo."""
     picks = []
     for n in (1, 2, 3):
         folder = ROOT / "images" / ("slide%d" % n)
-        files = [p for p in folder.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")] if folder.exists() else []
-        if not files:
-            raise SystemExit("No jpg/png/webp images found in images/slide%d/ - add some and commit them." % n)
-        picks.append(random.choice(files))
+        files = [p for p in folder.glob("*") if p.suffix.lower() in IMG_EXT] if folder.exists() else []
+        random.shuffle(files)
+        pick = next((p for p in files if _openable(p)), None)
+        if pick is None:
+            raise SystemExit("No readable photos found in images/slide%d/ - add some and commit them." % n)
+        picks.append(pick)
     print("Backgrounds:", ", ".join(p.name for p in picks))
     return picks
 

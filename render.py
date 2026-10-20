@@ -9,6 +9,12 @@ from playwright.sync_api import sync_playwright
 
 import config
 
+try:  # lets Pillow open iPhone HEIC photos, even ones renamed to .jpg
+    from pillow_heif import register_heif_opener
+    register_heif_opener()
+except ImportError:
+    pass
+
 ROOT = Path(__file__).parent
 W, H = config.WIDTH, config.HEIGHT
 OFFSET_Y = (H - 1440) // 2  # keeps the layout centred if you change HEIGHT
