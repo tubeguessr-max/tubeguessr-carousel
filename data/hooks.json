@@ -1,9 +1,23 @@
-[
-  "You’re not a real Londoner unless you know the answer to this ☕",
-  "Bet you can’t guess this Tube station 🚇",
-  "If you know this one, you’re a proper Londoner ☕",
-  "Londoners: can you guess this station?",
-  "Think you know the Tube? Guess this station 👀",
-  "Can you name this station from its lines alone?",
-  "Only a real Londoner will get this one 🚇"
-]
+{
+  "normal": [
+    "You’re not a real Londoner unless you know the answer to this ☕",
+    "Bet you can’t guess this Tube station 🚇",
+    "If you know this one, you’re a proper Londoner ☕",
+    "Londoners: can you guess this station?",
+    "Think you know the Tube? Guess this station 👀",
+    "Can you name this station from its lines alone?",
+    "Only a real Londoner will get this one 🚇"
+  ],
+  "bait": [
+    "If you get this wrong, you’ve not really lived in London 😭",
+    "Anyone who says they know every Tube station is lying",
+    "Tourists get this right. Londoners get it wrong. Why?? 😭",
+    "10 years in London and you STILL won’t get this",
+    "Genuinely embarrassing if you can’t get this one 💀",
+    "Only people who actually commute will get this. Prove me wrong",
+    "If you need to scroll for the answer, hand in your Oyster card",
+    "99% of Londoners will get this wrong. Be honest 👀",
+    "You’ve walked through this station 100 times and still don’t know it",
+    "If you say Zone 1, you’re wrong. Comment your guess 👇"
+  ]
+}
