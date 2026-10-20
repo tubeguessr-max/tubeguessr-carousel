@@ -30,7 +30,7 @@ body { position: relative;
 /* single-line boxes and pills */
 .box { display: table; margin: 0 auto; background: #fff; color: #000; border-radius: .2em;
        padding: .17em .45em; line-height: 1.2; white-space: nowrap; }
-.appstore { position: absolute; left: 50%; transform: translateX(-50%); width: 606px; height: auto; }
+.appstore { position: absolute; left: 50%; transform: translateX(-50%); width: auto; height: auto; }
 """.replace("__W__", str(W)).replace("__H__", str(H)).replace("__FW__", str(config.FONT_WEIGHT))
 
 
@@ -104,6 +104,17 @@ def slide3_html(station: str, has_appstore: bool) -> str:
     )
 
 
+def _find_appstore():
+    """Any png/jpg/webp in assets/ is used, whatever it is called."""
+    folder = ROOT / "assets"
+    if not folder.exists():
+        return None
+    for p in sorted(folder.iterdir()):
+        if p.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp"):
+            return p
+    return None
+
+
 def prepare_background(src: Path, dest: Path) -> None:
     """Fix phone-photo rotation, crop to the slide size, save as JPEG."""
     with Image.open(src) as im:
@@ -126,12 +137,15 @@ def render_all(backgrounds: list, station: str, station_lines: list, hook: str, 
     else:
         print("WARNING: fonts/TikTokSans.ttf not found, falling back to a system font.")
 
-    appstore = ROOT / "assets" / "app-store.png"
-    has_appstore = appstore.exists()
+    appstore = _find_appstore()
+    has_appstore = appstore is not None
     if has_appstore:
-        shutil.copy(appstore, workdir / "app-store.png")
+        with Image.open(appstore) as im:
+            im = ImageOps.contain(im.convert("RGBA"), (606, 590), method=Image.LANCZOS)
+            im.save(workdir / "app-store.png", "PNG")
+        print("Using App Store image:", appstore.name)
     else:
-        print("WARNING: assets/app-store.png not found, slide 3 will have no App Store image.")
+        print("WARNING: no image found in assets/, slide 3 will have no App Store image.")
 
     pages = [slide1_html(hook), slide2_html(station_lines, line_styles), slide3_html(station, has_appstore)]
     outputs = []
